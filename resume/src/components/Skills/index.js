@@ -2,11 +2,20 @@ import './index.css'
 
 import React from 'react'
 
-const Skills = () => {
+const Skills = (props) => {
+  
   return (
-    <div>
-      habi jabi baal bitchi aikhane skills
-    </div>
+    <>
+    <h1>Skills</h1>
+
+    {
+    Object.keys(props.data).map((item,index)=>(
+      
+      <div key={index}>
+      <b>{item}: </b>  {props.data[item]}
+      </div>
+    ))}
+      </>
   )
 }
 

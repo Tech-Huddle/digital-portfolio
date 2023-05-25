@@ -1,8 +1,10 @@
 #about{
-    text-align: center;
+    text-align: justify;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: justify;
     /* background-color: red; */
     width: 100%;
+    
+    
 }

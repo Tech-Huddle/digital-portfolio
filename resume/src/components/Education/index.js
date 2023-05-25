@@ -2,14 +2,29 @@ import './index.css'
 
 import React from 'react'
 
-const Education = () => {
+const Education = (props) => {
   return (
     <div>
       <h1>Education</h1>
-      <h4>School name</h4>
-      <p>date 1 - date 2</p>
-      <p> kon stream  and GPA koto peyecho 6.9/10</p>
-
+      {
+        props.details.map((item,i)=>
+        (  <div key={i}>
+        <div>
+          {item['course']}
+        </div>
+        <div>
+          {item['institute']}
+        </div>
+        <div>
+          {item['major']}
+        </div>
+        <div>
+          {item['pass-year']}
+        </div>
+          </div>
+          )
+        )
+      }
     </div>
   )
 }
