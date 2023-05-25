@@ -2,9 +2,13 @@
     text-align: justify;
     display: flex;
     flex-direction: column;
-    justify-content: justify;
+    justify-content: center;
     /* background-color: red; */
     width: 100%;
     
     
+}
+
+#about>h1{
+    text-align: center;
 }

@@ -5,9 +5,9 @@ import React from 'react'
 const Skills = (props) => {
   
   return (
-    <>
-    <h1>Skills</h1>
-
+    <div>
+    <h1 className="text-4xl font-bold">Skills</h1>
+    
     {
     Object.keys(props.data).map((item,index)=>(
       
@@ -15,7 +15,7 @@ const Skills = (props) => {
       <b>{item}: </b>  {props.data[item]}
       </div>
     ))}
-      </>
+      </div>
   )
 }
 

@@ -5,7 +5,7 @@ import React from 'react'
 const Experience = (props) => {
   return (
     <div>
-        <h1>Work Experience</h1>
+        <h1 className="text-4xl font-bold">Work Experience</h1>
         {
           props.exp.map(
             (item,i)=> (

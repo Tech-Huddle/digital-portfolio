@@ -7,25 +7,32 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Lang from "./components/Lang";
 
-import data from './sample-data/bio-data.json';
+import info from './sample-data/bio-data.json';
+
 
 class UserData{
-  Constructor(){}
-  get_data(){}
-
-
-}
-
+  constructor(info){
+    this.data = info
+  }
+  getData(){
+    return this.data
+  }
+  
+  
+} 
 
 function App() {
+  const user_data = new UserData(info)
+  const data = user_data.getData()
+  
   return (
-    <div className="App">
-      <div className="paper">
+    <div className="App bg-white">
+      <div className="paper ">
         <div className="top">
           <div className="profile-img">
-          <img src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" alt=""  style={{'width':'22vw'}} />
+          <img  src={data['image-url']} alt=""  style={{'width':'15vw'}} />
           </div>
-          <div className="about-section">
+          <div className="about-section ">
           <About name={data.name}
             headline={data['head-line']}
             address={data['address']}
@@ -37,14 +44,12 @@ function App() {
           </div>
           
         </div>
-        <hr />
         <div className="bottom">
           <div className="left">
             <Achievements></Achievements>
             <Skills data={data['technical-skill']}></Skills>
             <Lang data={data['languages']}></Lang>
           </div>
-          <hr />
           <div className="right">
             <Experience exp={data['employment-history']}/>
             <Projects></Projects>

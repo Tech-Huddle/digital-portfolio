@@ -1,46 +1,84 @@
+:root{
+  --color2: aliceblue;
+  --color1: rgb(113, 112, 112);
+  --text1: aliceblue;
+  --text2: aliceblue;
+  
+}
+
 .App{
   border: none;
   margin: 30px auto;
   width: 80%;
-  padding: 20px;
+  /* padding: 20px; */
   box-sizing: border-box;
-  box-shadow: -18px 20px 25px 3px rgba(0, 0, 0, 0.351);
+  box-shadow: -18px 20px 30px 5px rgba(0, 0, 0, 0.734);
   /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
- */
-  background-color: white;
+  */
+  /* background-color: white; */
 }
 .top{
   display: flex;
 }
 .profile-img{
-  padding: 10px;
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 30%;
+  height: 30%;
+  background-color: var(--color2);
 }
 .profile-img >img{
   border: none;
-  border-radius: 50px;
+  border-radius: 50%;
   box-shadow: -1px 1px 1px 1px black;
 }
 .about-section{
+  color: var(--text2);
   width: 70%;
   display: flex;
-
+  background-color: var(--color1);
+  
 }
 .bottom{
   display: flex;
-
+  
 }
 .left{
+  color: var(--text1);
+  background-color: var(--color1);
+  
   width: 30%;
+  /* border-top: 1px solid rgba(165, 42, 42, 0.34); */
+  padding: 30px;
 }
 
 .right{
+  /* color: var(text1); */
+  background-color: var(--color2);
   width: 70%;
+  padding: 30px;
 
 }
 
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: black; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(red,yellow); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(fuchsia,purple); 
+}
 @media (width<1000px) {
   .App{
     width:98%;

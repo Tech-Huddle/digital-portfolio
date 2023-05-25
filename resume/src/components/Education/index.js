@@ -5,7 +5,7 @@ import React from 'react'
 const Education = (props) => {
   return (
     <div>
-      <h1>Education</h1>
+      <h1 className="text-4xl font-bold">Education</h1>
       {
         props.details.map((item,i)=>
         (  <div key={i}>
