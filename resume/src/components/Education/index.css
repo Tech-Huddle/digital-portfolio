@@ -1,0 +1,11 @@
+
+.circles{
+    background-color:aliceblue;
+    border: 2px solid rgb(30,64,175);
+    width: var(--radius);
+    height: var(--radius);
+    display: block;
+    position: relative;
+    border-radius: 50%;    
+    transform: translate(-1.7rem,1.5rem);
+}

@@ -98,7 +98,7 @@
              {
                 "course":"10+2(HIGHER SECONDARY)", 
                 "institute": "Baruipur High School (WBCHSE)",
-                "subject": "Science",
+                "major": "Science",
                 "pass-year": "2012"
             }
             ,
@@ -106,7 +106,7 @@
              {
                 "course":"10 (SECONDARY)", 
                 "institute": "Baruipur High School (WBBSE)",
-                "subject": "General",
+                "major": "General",
                 "pass-year": "2010"
             }
         

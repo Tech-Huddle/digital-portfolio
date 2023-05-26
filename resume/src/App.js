@@ -52,7 +52,7 @@ function App() {
           </div>
           <div className="right">
             <Experience exp={data['employment-history']}/>
-            <Projects></Projects>
+            {/* <Projects></Projects> */}
             <Education details={data['academics']}/>
           </div>
         </div>
