@@ -30,7 +30,9 @@ function App() {
       <div className="paper ">
         <div className="top">
           <div className="profile-img">
-          <img  src={data['image-url']} alt=""  style={{'width':'15vw'}} />
+          <img  src={data['image-url']} alt=""  
+          // style={{'width':'15vw'}}
+           />
           </div>
           <div className="about-section ">
           <About name={data.name}
@@ -52,7 +54,7 @@ function App() {
           </div>
           <div className="right">
             <Experience exp={data['employment-history']}/>
-            {/* <Projects></Projects> */}
+            <Projects></Projects>
             <Education details={data['academics']}/>
           </div>
         </div>

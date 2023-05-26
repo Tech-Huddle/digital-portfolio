@@ -1,16 +1,42 @@
-import './index.css'
+import "./index.css";
 
-import React from 'react'
+import React from "react";
 
 const Projects = () => {
   return (
     <>
-        <h1 className="text-4xl font-bold">Projects</h1>
-    <div className="">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis ex nulla at. Eos laborum saepe labore aliquid exercitationem repellat quaerat blanditiis officia nihil rem. Est dolorum inventore laudantium architecto voluptates temporibus animi vero blanditiis id corrupti. Molestiae numquam officia hic iste totam voluptas sequi, libero quae id corporis, reiciendis provident minima iusto harum tempora. Assumenda obcaecati dignissimos autem non in deleniti voluptates placeat similique quia dicta consequatur nesciunt officiis quo vel nam pariatur, id fuga provident omnis! Deserunt exercitationem ducimus consequuntur tenetur hic ratione quam quaerat? Libero beatae omnis nam porro corporis! Odit iusto ex unde! Recusandae ex repudiandae nulla. Dolorem minus assumenda, minima labore atque consequuntur distinctio. Quidem quo, dicta veritatis labore, maxime animi suscipit, illum provident dolorem soluta sit vitae eius.</p>
-    </div>
-    </>
-  )
-}
+      <h1 className="text-4xl font-bold">Projects</h1>
+      <div className="p-2">
+      <div className="m-2 p-2 border-l-2 border-blue-800">
 
-export default Projects
+          <div className="chompa"></div>
+
+        <div className="flex justify-between border-b-2 border-blue-800">
+          <div className="ml-2 text-lg font-bold text-blue-800">Project 1</div>
+          <div >Jan 2023- May 2023</div>
+        </div>
+
+        <div className="m-2 ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+          aliquam veritatis deserunt nulla quos commodi porro cumque, doloribus
+          suscipit praesentium? Quibusdam nemo eaque harum totam sapiente
+          deleniti libero quis optio.
+        </div>
+        <div className="m-2 flex gap-3">
+          <div className="bg-blue-500 px-3 py-1 rounded-lg text-sm text-white ">
+            Python
+          </div>
+          <div className="bg-blue-500 px-3 py-1 rounded-lg text-sm text-white ">
+            JavaScript
+          </div>
+          <div className="bg-blue-500 px-3 py-1 rounded-lg text-sm text-white ">
+            Django
+          </div>
+        </div>
+      </div>
+      </div>
+    </>
+  );
+};
+
+export default Projects;

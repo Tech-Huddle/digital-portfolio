@@ -12,7 +12,7 @@ const Experience = (props) => {
           props.exp.map(
             (item,i)=> (
               <div key={i}>
-                <div className="flex justify-between border-b-2 border-gray-500 rounded-b-sm">
+                <div className="flex justify-between border-b-2 border-blue-800 rounded-b-sm">
 
                 <h3 className="text-lg font-bold text-blue-800">{item['organization']} </h3>
                 <div>{item['duration']}</div>
