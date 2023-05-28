@@ -136,13 +136,13 @@
         "issue-date": {
             "month":"",
             "year":""
-        }
+        },
         "expiry-date": {
             "month":"",
             "year":""
         },
-        "credential-id": ""
-        "credential-url": ""
+        "credential-id": "",
+        "credential-url": "",
         "cerficate-badge":""
     }]
 }

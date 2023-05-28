@@ -6,9 +6,11 @@ import Achievements from "./components/Achievements";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Lang from "./components/Lang";
+import info from './sample-data/bio-data.json';
+import UserDataService from "./service/UserDataService";
 
 function App() {
-  const user_data = new UserData(info)
+  const user_data = new UserDataService(info)
   const data = user_data.getData()
   
   return (
