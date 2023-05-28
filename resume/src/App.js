@@ -7,20 +7,6 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Lang from "./components/Lang";
 
-import info from './sample-data/bio-data.json';
-
-
-class UserData{
-  constructor(info){
-    this.data = info
-  }
-  getData(){
-    return this.data
-  }
-  
-  
-} 
-
 function App() {
   const user_data = new UserData(info)
   const data = user_data.getData()
