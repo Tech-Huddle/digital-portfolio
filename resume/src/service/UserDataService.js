@@ -1,8 +1,9 @@
+import info from "../sample-data/bio-data.json"
 
 
 class UserDataService{
   // Try to get rid off contrusctor
-  constructor(info){
+  constructor(){
     this.data = info
   }
   getData(){
