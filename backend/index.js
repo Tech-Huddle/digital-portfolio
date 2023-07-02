@@ -10,31 +10,8 @@ const { errorHandler } = require('./src/middlewares/errors/errorMiddleware');
 const device = require('express-device');
 const db = require('./database/connection')
 const PORT = EV.PORT || 6700;
-
+sequelize.sync();
 const app = express();
-
-const corsOpts = {
-    origin: '*',
-    methods: [
-        'GET',
-        'POST',
-        'PATCH',
-        'PUT',
-        'DELETE',
-        'OPTIONS'
-    ],
-    allowedHeaders: [
-        'Content-Type',
-        'Authorization',
-        'language',
-        'X-Amz-Date',
-        'X-Api-Key',
-        'X-Amz-Security-Token',
-        'X-Amz-User-Agent',
-        'Session',
-        'Accesstoken'
-    ]
-};
 
 //app.use(cors(corsOpts));
 app.options('*', cors());

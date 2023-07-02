@@ -9,8 +9,8 @@ const {
 
 
 router.post('/create', createBasicDetails);
-router.get(['/list', '/list/:id'], listUser);
-router.patch('/update/:id', updateUser);
-router.delete('/delete', deleteUser);
+// router.get(['/list', '/list/:id'], listUser);
+// router.patch('/update/:id', updateUser);
+// router.delete('/delete', deleteUser);
 
 module.exports = router;

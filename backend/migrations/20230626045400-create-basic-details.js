@@ -1,10 +1,13 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../../database/connection');
-module.exports = sequelize.define('BasicDetails', {
-    id: {
-        type:  Sequelize.INTEGER,
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('basic_details', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        autoIncrement: true
+        type: Sequelize.INTEGER
       },
       user_Id: {
         type:  Sequelize.INTEGER,
@@ -46,7 +49,17 @@ module.exports = sequelize.define('BasicDetails', {
         type: Sequelize.STRING,
         allowNull: false
       },
-
-}, {
-    tableName: 'basic_details'
-})
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('basic_details');
+  }
+};
