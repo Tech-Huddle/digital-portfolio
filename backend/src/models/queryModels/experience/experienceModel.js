@@ -16,17 +16,17 @@ const Sequelize = require("../../../../database/connection");
 // ************************* Associations End **************************************************************
 
 
-exports.userCreate = async (params, next) => {
+exports.experienceCreate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
 
-        var user_details = params.data;
+        var params = params.data;
         let result = "";
-        let get_user_no = await db.User.findOne({ where: { "email": user_details.email } });
+        let get_user_no = await db.Experience.findOne({ where: { "user_id": params.user_id } });
         if (get_user_no == null) {
-            await db.User.create(user_details);
+            result = await db.Experience.create(params);
         } else {
-            next({ "success": false, "message": "user already exist", "status": 409 });
+            next({ "success": false, "message": "basic details already exist", "status": 409 });
             return;
         }
 
@@ -44,12 +44,11 @@ exports.userCreate = async (params, next) => {
     }
 }
 
-exports.usersList = async (params, next) => {
+exports.experienceList = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         params = params.data;
         var inner_hash = {};
-        let org_cust_user_hash = {};
         if (params.id) {
             inner_hash["id"] = params.id;
         }
@@ -57,11 +56,8 @@ exports.usersList = async (params, next) => {
             if (Object.keys(params.filter).length > 0) {
                 let filterKeys = Object.keys(params.filter);
                 filterKeys.forEach(filterKey => {
-                    if ((!(filterKey == "offset" || filterKey == "limit" ))) {
-                        inner_hash[filterKey] = params.filter[filterKey];
-                    }
                     if ((!(filterKey == "offset" || filterKey == "limit"))) {
-                        org_cust_user_hash[filterKey] = params.filter[filterKey];
+                        inner_hash[filterKey] = params.filter[filterKey];
                     }
                 })
             }
@@ -88,11 +84,11 @@ exports.usersList = async (params, next) => {
             findAll_hash["offset"] = offset;
             findAll_hash["limit"] = limit;
         }
-        var result = await db.User.findAll(findAll_hash);
+        var result = await db.Experience.findAll(findAll_hash);
         if (!params.filter || (params.filter && (!params.filter.total || parseInt(params.filter.total) == 0))) {
             delete findAll_hash.offset;
             delete findAll_hash.limit;
-            var count = await db.User.findAll(findAll_hash);
+            var count = await db.Experience.findAll(findAll_hash);
             logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
             return ({ "data": JSON.parse(JSON.stringify(result)), "total": count.length, "success": true });
         } else {
@@ -108,15 +104,15 @@ exports.usersList = async (params, next) => {
     }
 }
 
-exports.userUpdate = async (params, next) => {
+exports.experienceUpdate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         var id = params.id;
         var data = params.data;
-        var dataExists = await db.User.findOne({ where: { id: id } });
+        var dataExists = await db.Experience.findOne({ where: { id: id } });
         dataExists = JSON.parse(JSON.stringify(dataExists));
         if (dataExists != null) {
-            let updateData = await db.User.update(
+            let updateData = await db.Experience.update(
                 data, {
                 where: { id: id }
             });
@@ -140,19 +136,19 @@ exports.userUpdate = async (params, next) => {
     }
 }
 
-exports.userDelete = async (params, next) => {
+exports.experienceDelete = async (params, next) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     try {
         var id = params.data;
-        var dataExists = await db.User.findOne({
+        var dataExists = await db.Experience.findOne({
             where: { id: id }
         });
-        if(dataExists!=null) {
-            var result = await db.User.destroy({
+        if (dataExists != null) {
+            var result = await db.Experience.destroy({
                 where: { id: id }
             });
             return ({ "message": "Deleted Successfully", "success": true })
-        }else{
+        } else {
             next({ "message": "Data not found", "success": false, "status": 404 });
         }
     } catch (error) {
