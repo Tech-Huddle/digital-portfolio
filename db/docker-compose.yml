@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    ports:
+      - 3306:3306
+    command: --init-file /mnt/myvolume/data/application/init.sql
+    volumes:
+        - ./init.sql:/mnt/myvolume/data/application/init.sql
+        - /mnt/myvolume/db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root123
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
