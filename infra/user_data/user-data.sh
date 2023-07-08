@@ -36,5 +36,6 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 sudo usermod -aG docker ubuntu
 git clone -b dev/infra https://github.com/Tech-Huddle/digital-portfolio.git
-cd digital-portfolio/db
+mv digital-portfolio /home/ubuntu/digital-portfolio
+cd /home/ubuntu/digital-portfolio/db
 docker-compose up -d
