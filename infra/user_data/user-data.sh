@@ -39,3 +39,4 @@ git clone -b dev/infra https://github.com/Tech-Huddle/digital-portfolio.git
 mv digital-portfolio /home/ubuntu/digital-portfolio
 cd /home/ubuntu/digital-portfolio/db
 docker-compose up -d
+# ssh -i utshab-key.pem ubuntu@13.251.157.187 'pwd'
