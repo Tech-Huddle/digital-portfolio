@@ -32,6 +32,9 @@ echo \
 
 
 sudo apt-get update -y
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
 
 sudo usermod -aG docker ubuntu
+git clone -b dev/infra https://github.com/Tech-Huddle/digital-portfolio.git
+cd digital-portfolio/db
+docker-compose up -d
