@@ -3,21 +3,20 @@ const { getName } = require('../../logger/logFunctionName');
 const { checkOpKeys } = require('../common/searchOpKeys');
 const Joi = require('joi');
 
-exports.validateParamsBasicDetailsCreate = (req, next) => {
+exports.validateParamsEducationDetailsCreate = (req, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let data = req;
         console.log(data);
         const schemas = Joi.object({
-            first_name: Joi.string().min(1).required(),
-            last_name: Joi.string().min(1).required(),
-            email_address: Joi.string().min(1).required().email(),
-            phone_number: Joi.string().min(1).required(),
             user_id: Joi.number().required(),
-            address: Joi.string().min(1).required(),
-            objective: Joi.string().min(1).required(),
-            headline: Joi.string().min(1).required(),
-            language: Joi.string().min(1).required()
+            institution_Name: Joi.string().min(1).required(),
+            location: Joi.string().min(1).required(),
+            major: Joi.string().min(1).required(),
+            description: Joi.string().min(1).required(),
+            start_date: Joi.string().min(1).required(),
+            end_Date: Joi.string().min(1).required(),
+            
         });
         let validation = schemas.validate(data);
         if (validation.error) {
@@ -34,7 +33,7 @@ exports.validateParamsBasicDetailsCreate = (req, next) => {
     }
 }
 
-exports.formatResponseBasicDetailsCreate = (params) => {
+exports.formatResponseEducationDetailsCreate = (params) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     let result = {};
     if (params.success) {
@@ -48,7 +47,7 @@ exports.formatResponseBasicDetailsCreate = (params) => {
     return (result);
 }
 
-exports.validateParamsBasicDetailsList = async (req, next) => {
+exports.validateParamsEducationDetailsList = async (req, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let id = req.params.id || null;
@@ -94,7 +93,7 @@ exports.validateParamsBasicDetailsList = async (req, next) => {
     }
 }
 
-exports.formatResponseBasicDetailsList = (params) => {
+exports.formatResponseEducationDetailsList = (params) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     let result = {};
     if (params.success) {
@@ -109,23 +108,29 @@ exports.formatResponseBasicDetailsList = (params) => {
     return (result);
 }
 
-exports.validateParamsBasicDetailsUpdate=(req,next)=>{
+exports.validateParamsEducationDetailsUpdate=(req,next)=>{
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let data = req.body;
         let id = req.params.id;
         let data_validate={};
-        if(data.first_name){
-            data_validate["first_name"] = Joi.string().min(1).required()
+        if(data.institution_Name){
+            data_validate["institution_Name"] = Joi.string().min(1).required()
         }
-        if(data.last_name){
-            data_validate["last_name"] = Joi.string().min(1).required()
+        if(data.location){
+            data_validate["location"] = Joi.string().min(1).required()
         }
-        if(data.email){
-            data_validate["Email_address"] = Joi.string().min(1).required()
+        if(data.start_date){
+            data_validate["start_date"] = Joi.string().min(1).required()
         }
-        if(data.phone_number){
-            data_validate["phone_number"] = Joi.string().min(1).required()
+        if(data.end_Date){
+            data_validate["end_Date"] = Joi.string().min(1).required()
+        }
+        if(data.description){
+            data_validate["description"] = Joi.string().min(1).required()
+        }
+        if(data.major){
+            data_validate["major"] = Joi.string().min(1).required()
         }
         const schemas = Joi.object().keys(data_validate);
         const validation = schemas.validate(data);
@@ -143,7 +148,7 @@ exports.validateParamsBasicDetailsUpdate=(req,next)=>{
     }
 }
 
-exports.formatResponseBasicDetailsUpdate=(params)=>{
+exports.formatResponseEducationDetailsUpdate=(params)=>{
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     let result = {};
     if (params.success) {
@@ -158,7 +163,7 @@ exports.formatResponseBasicDetailsUpdate=(params)=>{
     return (result);
 }
 
-exports.validateParamsBasicDetailsDelete = (req,next)=>{
+exports.validateParamsEducationDetailsDelete = (req,next)=>{
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let data = req.body.id;
@@ -177,7 +182,7 @@ exports.validateParamsBasicDetailsDelete = (req,next)=>{
     }
 }
 
-exports.formatResponseBasicDetailsDelete=(params)=>{
+exports.formatResponseEducationDetailsDelete=(params)=>{
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     let result = {};
     if (params.success) {

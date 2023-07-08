@@ -13,7 +13,7 @@ exports.createBasicDetails = async (req, res, next) => {
             result = await BasicDetailsCreate(validDatas, next)
             res.send({ "message": "success", "data": formatResponseBasicDetailsCreate(result) });
         } else {
-            next({ "message": validDatas.message });
+            next({ "message": validDatas.message,"status": validDatas.status});
         }
 
     } catch (error) {
@@ -50,7 +50,7 @@ exports.updateBasicDetails = async (req, res, next) => {
             result = await BasicDetailsUpdate(validDatas, next)
             res.send({ "message": "success", "data": formatResponseBasicDetailsUpdate(result) });
         } else {
-            next({ "message": validDatas.message });
+            next({ "message": validDatas.message,"status": validDatas.status });
         }
 
     } catch (error) {
@@ -68,7 +68,7 @@ exports.deleteBasicDetails = async (req, res, next) => {
             result = await BasicDetailsDelete(validDatas, next)
             res.send({ "message": "success", "data": formatResponseBasicDetailsDelete(result) });
         } else {
-            next({ "message": validDatas.message });
+            next({ "message": validDatas.message,"status": validDatas.status });
         }
 
     } catch (error) {

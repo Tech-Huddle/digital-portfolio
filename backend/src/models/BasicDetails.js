@@ -6,19 +6,19 @@ module.exports = sequelize.define('BasicDetails', {
         primaryKey: true,
         autoIncrement: true
       },
-      user_Id: {
+      user_id: {
         type:  Sequelize.INTEGER,
         allowNull: false
       },
-      first_Name: {
+      first_name: {
         type:  Sequelize.STRING,
         allowNull: false
       },
-      last_Name: {
+      last_name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      phone_Number: {
+      phone_number: {
         type: Sequelize.STRING,
         allowNull: false
       },

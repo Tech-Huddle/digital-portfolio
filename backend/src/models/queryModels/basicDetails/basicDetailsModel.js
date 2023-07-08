@@ -20,13 +20,13 @@ exports.BasicDetailsCreate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
 
-        var user_details = params.data;
+        var basic_details = params.data;
         let result = "";
-        let get_user_no = await db.BasicDetails.findOne({ where: { "email": user_details.email } });
+        let get_user_no = await db.BasicDetails.findOne({ where: { "user_id": basic_details.user_id } });
         if (get_user_no == null) {
-            await db.BasicDetails.create(user_details);
+            result = await db.BasicDetails.create(basic_details);
         } else {
-            next({ "success": false, "message": "user already exist", "status": 409 });
+            next({ "success": false, "message": "basic details already exist", "status": 409 });
             return;
         }
 
@@ -56,7 +56,7 @@ exports.BasicDetailsList = async (params, next) => {
             if (Object.keys(params.filter).length > 0) {
                 let filterKeys = Object.keys(params.filter);
                 filterKeys.forEach(filterKey => {
-                    if ((!(filterKey == "offset" || filterKey == "limit" || filterKey == "cust_id" || filterKey == "org_id"))) {
+                    if ((!(filterKey == "offset" || filterKey == "limit"))) {
                         inner_hash[filterKey] = params.filter[filterKey];
                     }
                 })
@@ -66,7 +66,7 @@ exports.BasicDetailsList = async (params, next) => {
                     let filter_op = params.filter_op;
                     let filter_op_keys = Object.keys(params.filter_op);
                     filter_op_keys.forEach(filterOpKey => {
-                        if ((!(filterOpKey == "offset" || filterOpKey == "limit" || filterOpKey == "cust_id" || filterOpKey == "org_id"))) {
+                        if ((!(filterOpKey == "offset" || filterOpKey == "limit"))) {
                             inner_hash[filterOpKey] = { [Op[filter_op[filterOpKey]]]: params.filter[filterOpKey] }
                         }
                     })
@@ -143,12 +143,12 @@ exports.BasicDetailsDelete = async (params, next) => {
         var dataExists = await db.BasicDetails.findOne({
             where: { id: id }
         });
-        if(dataExists!=null) {
+        if (dataExists != null) {
             var result = await db.BasicDetails.destroy({
                 where: { id: id }
             });
             return ({ "message": "Deleted Successfully", "success": true })
-        }else{
+        } else {
             next({ "message": "Data not found", "success": false, "status": 404 });
         }
     } catch (error) {
