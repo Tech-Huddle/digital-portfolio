@@ -9,7 +9,7 @@ services:
     command: --init-file /mnt/myvolume/data/application/init.sql
     volumes:
         - ./init.sql:/mnt/myvolume/data/application/init.sql
-        - ./mnt/myvolume/db/data:/var/lib/mysql
+        - /mnt/myvolume/db/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root123
