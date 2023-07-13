@@ -8,7 +8,7 @@ module "ebs_volume" {
 resource "aws_instance" "dp_server" {
   ami           = "ami-0df7a207adb9748c7"  # Specify the desired AMI ID for your region
   instance_type = "t2.micro"
-  key_name      = "utshab-key"
+  key_name      = "dev-key"
   availability_zone = "ap-southeast-1a"
   vpc_security_group_ids = [ module.security_group.sg_id ]   # As we are creating the EC2 in a VPC
   user_data = file("${path.module}/../user_data/user-data.sh")
