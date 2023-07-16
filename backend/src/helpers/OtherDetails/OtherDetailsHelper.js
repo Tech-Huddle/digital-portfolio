@@ -3,7 +3,7 @@ const { getName } = require("../../logger/logFunctionName");
 const { checkOpKeys } = require("../common/searchOpKeys");
 const Joi = require("joi");
 
-exports.validateParamsExperienceCreate = (req, next) => {
+exports.validateParamsOtherDetailsCreate = (req, next) => {
   logger.info(
     "*** Starting %s of %s ***",
     getName().functionName,
@@ -14,12 +14,12 @@ exports.validateParamsExperienceCreate = (req, next) => {
     console.log(data);
     const schemas = Joi.object({
       user_id: Joi.number().required(),
-      organisation_Name: Joi.string().min(1).required(),
-      location: Joi.string().min(1).required(),
-      start_date: Joi.string().min(1).required(),
-      end_Date: Joi.string().min(1).required(),
-      description: Joi.string().min(1).required(),
-      responsibility: Joi.string().min(1).required(),
+      git_hub_url: Joi.string().min(1).required(),
+      linkedIn_url: Joi.string().min(1).required(),
+      twitter_url: Joi.string().min(1).required(),
+      facebook_url: Joi.string().min(1).required(),
+      youtube_url: Joi.string().min(1).required(),
+      portfolio_url: Joi.string().min(1).required(),
     });
     let validation = schemas.validate(data);
     if (validation.error) {
@@ -52,7 +52,7 @@ exports.validateParamsExperienceCreate = (req, next) => {
   }
 };
 
-exports.formatResponseExperienceCreate = (params) => {
+exports.formatResponseOtherDetailsCreate = (params) => {
   logger.info(
     "* Starting %s of %s *",
     getName().functionName,
@@ -74,7 +74,7 @@ exports.formatResponseExperienceCreate = (params) => {
   return result;
 };
 
-exports.validateParamsExperienceList = async (req, next) => {
+exports.validateParamsOtherDetailsList = async (req, next) => {
   logger.info(
     "*** Starting %s of %s ***",
     getName().functionName,
@@ -132,7 +132,7 @@ exports.validateParamsExperienceList = async (req, next) => {
   }
 };
 
-exports.formatResponseExperienceList = (params) => {
+exports.formatResponseOtherDetailsList = (params) => {
   logger.info(
     "* Starting %s of %s *",
     getName().functionName,
@@ -155,7 +155,7 @@ exports.formatResponseExperienceList = (params) => {
   return result;
 };
 
-exports.validateParamsExperienceUpdate = (req, next) => {
+exports.validateParamsOtherDetailsUpdate = (req, next) => {
   logger.info(
     "*** Starting %s of %s ***",
     getName().functionName,
@@ -165,23 +165,23 @@ exports.validateParamsExperienceUpdate = (req, next) => {
     let data = req.body;
     let id = req.params.id;
     let data_validate = {};
-    if (data.organisation_Name) {
-      data_validate["organisation_Name"] = Joi.string().min(1).required();
+    if (data.git_hub_url) {
+      data_validate["git_hub_url"] = Joi.string().min(1).required();
     }
-    if (data.location) {
-      data_validate["location"] = Joi.string().min(1).required();
+    if (data.linkedIn_url) {
+      data_validate["linkedIn_url"] = Joi.string().min(1).required();
     }
-    if (data.start_date) {
-      data_validate["start_date"] = Joi.string().min(1).required();
+    if (data.twitter_url) {
+      data_validate["twitter_url"] = Joi.string().min(1).required();
     }
-    if (data.end_Date) {
-      data_validate["end_Date"] = Joi.string().min(1).required();
+    if (data.facebook_url) {
+      data_validate["facebook_url"] = Joi.string().min(1).required();
     }
-    if (data.description) {
-      data_validate["description"] = Joi.string().min(1).required();
+    if (data.youtube_url) {
+      data_validate["youtube_url"] = Joi.string().min(1).required();
     }
-    if (data.responsibility) {
-      data_validate["responsibility"] = Joi.string().min(1).required();
+    if (data.portfolio_url) {
+      data_validate["portfolio_url"] = Joi.string().min(1).required();
     }
     const schemas = Joi.object().keys(data_validate);
     const validation = schemas.validate(data);
@@ -215,7 +215,7 @@ exports.validateParamsExperienceUpdate = (req, next) => {
   }
 };
 
-exports.formatResponseExperienceUpdate = (params) => {
+exports.formatResponseOtherDetailsUpdate = (params) => {
   logger.info(
     "* Starting %s of %s *",
     getName().functionName,
@@ -238,7 +238,7 @@ exports.formatResponseExperienceUpdate = (params) => {
   return result;
 };
 
-exports.validateParamsExperienceDelete = (req, next) => {
+exports.validateParamsOtherDetailseDelete = (req, next) => {
   logger.info(
     "*** Starting %s of %s ***",
     getName().functionName,
@@ -273,7 +273,7 @@ exports.validateParamsExperienceDelete = (req, next) => {
   }
 };
 
-exports.formatResponseExperienceDelete = (params) => {
+exports.formatResponseOtherDetailsDelete = (params) => {
   logger.info(
     "* Starting %s of %s *",
     getName().functionName,
