@@ -10,8 +10,8 @@ const App = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-[50%]">
+    <div className="flex items-center card-inner justify-center">
+      <div className="w-[50%] p-5">
         <form>
           
           <div class="mb-6 my-5">
@@ -36,8 +36,8 @@ const App = () => {
 
 
 
-          <div class="flex items-start mb-6 gap-1">
-            <div class="flex items-center h-5">
+          <div class="flex items-start mb-6 gap-1 ">
+            <div class="flex items-center h-5 ">
               <input
                 id="gender"
                 type="radio"
@@ -48,7 +48,7 @@ const App = () => {
             </div>
             <label
               for="gender"
-              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              class="ml-2 text-sm font-medium text-black"
             >
               Female
             </label>
@@ -63,7 +63,7 @@ const App = () => {
             </div>
             <label
               for="gender"
-              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              class="ml-2 text-sm font-medium text-gray-900"
             >
               Male
             </label>
@@ -78,7 +78,7 @@ const App = () => {
             </div>
             <label
               for="gender"
-              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              class="ml-2 text-sm font-medium text-gray-900"
             >
               American
             </label>
@@ -120,10 +120,16 @@ const App = () => {
 
           {/* button goes here */}
           <button
-            type="submit"
+            type="save"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Submit
+            Save
+          </button>
+          <button
+            type="next"
+            class="mx-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Next
           </button>
         </form>
 
