@@ -19,7 +19,7 @@ exports.createBasicDetails = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -38,7 +38,7 @@ exports.listBasicDetails = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -56,14 +56,14 @@ exports.updateBasicDetails = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
 exports.deleteBasicDetails = async (req, res, next) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     try {
-        let validDatas = validateParamsBasicDetailsDelete(req);
+        let validDatas = validateParamsBasicDetailsDelete(req,next);
         if (validDatas.success) {
             result = await BasicDetailsDelete(validDatas, next)
             res.send({ "message": "success", "data": formatResponseBasicDetailsDelete(result) });
@@ -74,6 +74,6 @@ exports.deleteBasicDetails = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }

@@ -11,7 +11,6 @@ exports.validateParamsOtherDetailsCreate = (req, next) => {
   );
   try {
     let data = req;
-    console.log(data);
     const schemas = Joi.object({
       user_id: Joi.number().required(),
       git_hub_url: Joi.string().min(1).required(),
@@ -48,7 +47,7 @@ exports.validateParamsOtherDetailsCreate = (req, next) => {
       getName().fileName
     );
     logger.error(err.message || JSON.stringify(err));
-    return { status: 500, success: false, message: "Internal_Server_Error" };
+    return { status: 500, success: false, message: "Internal Server Error" };
   }
 };
 
@@ -128,7 +127,7 @@ exports.validateParamsOtherDetailsList = async (req, next) => {
       getName().fileName
     );
     logger.error(err.message || JSON.stringify(err));
-    next({ status: 500, success: false, message: "Internal_Server_Error" });
+    next({ status: 500, success: false, message: "Internal Server Error" });
   }
 };
 
@@ -211,7 +210,7 @@ exports.validateParamsOtherDetailsUpdate = (req, next) => {
       getName().fileName
     );
     logger.error(err.message || JSON.stringify(err));
-    return { status: 500, success: false, message: "Internal_Server_Error" };
+    return { status: 500, success: false, message: "Internal Server Error" };
   }
 };
 
@@ -269,7 +268,7 @@ exports.validateParamsOtherDetailseDelete = (req, next) => {
       getName().fileName
     );
     logger.error(err.message || JSON.stringify(err));
-    next({ status: 500, success: false, message: "Internal_Server_Error" });
+    next({ status: 500, success: false, message: "Internal Server Error" });
   }
 };
 

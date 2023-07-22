@@ -7,7 +7,6 @@ exports.validateParamsEducationDetailsCreate = (req, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let data = req;
-        console.log(data);
         const schemas = Joi.object({
             user_id: Joi.number().required(),
             institution_Name: Joi.string().min(1).required(),
@@ -29,7 +28,7 @@ exports.validateParamsEducationDetailsCreate = (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -89,7 +88,7 @@ exports.validateParamsEducationDetailsList = async (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -144,7 +143,7 @@ exports.validateParamsEducationDetailsUpdate=(req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -178,7 +177,7 @@ exports.validateParamsEducationDetailsDelete = (req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 

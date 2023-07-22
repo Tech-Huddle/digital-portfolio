@@ -20,7 +20,7 @@ exports.createExperience = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -39,7 +39,7 @@ exports.listExperience = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -57,7 +57,7 @@ exports.updateExperience = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -75,6 +75,6 @@ exports.deleteExperience = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }

@@ -19,7 +19,7 @@ exports.createUser = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -38,7 +38,7 @@ exports.listUser = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -56,7 +56,7 @@ exports.updateUser = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }
 
@@ -74,6 +74,6 @@ exports.deleteUser = async (req, res, next) => {
     } catch (error) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
-        next({ message: "Internal_Server_Error" });
+        next({ message: "Internal Server Error" });
     }
 }

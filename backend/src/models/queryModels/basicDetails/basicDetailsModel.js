@@ -39,7 +39,7 @@ exports.BasicDetailsCreate = async (params, next) => {
             logger.error("* Username already exist in %s of %s *", getName().functionName, getName().fileName);
             next({ "success": false, "message": "Username_Already_Exist", "status": 409 });
         } else {
-            next({ "success": false, "message": "Internal_Server_Error" });
+            next({ "success": false, "message": "Internal Server Error" });
         }
     }
 }
@@ -100,7 +100,7 @@ exports.BasicDetailsList = async (params, next) => {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -132,7 +132,7 @@ exports.BasicDetailsUpdate = async (params, next) => {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -155,6 +155,6 @@ exports.BasicDetailsDelete = async (params, next) => {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
