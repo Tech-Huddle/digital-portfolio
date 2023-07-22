@@ -43,7 +43,7 @@ exports.createOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -72,7 +72,7 @@ exports.listOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -100,7 +100,7 @@ exports.updateOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -128,6 +128,6 @@ exports.deleteOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };

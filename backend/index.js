@@ -11,18 +11,12 @@ const db = require('./database/connection')
 const PORT = EV.PORT || 6700;
 sequelize.sync();
 const app = express();
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-var session = require('express-session')
 
 //app.use(cors(corsOpts));
 app.options('*', cors());
 app.use(device.capture());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false }));
-app.use(session({secret: 'keyboard cat'}));
-app.use(passport.initialize());
-app.use(passport.session());
 logger.stream = {
     write: (message, encoding) => {
         logger.http(message);

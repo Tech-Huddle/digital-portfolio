@@ -1,6 +1,6 @@
 exports.enLang = {
     //******************************Common start *************************************/
-    "Internal_Server_Error": "Internal server error",
+    "Internal Server Error": "Internal server error",
     "Provided_Data_Format_Is_Not_Proper": "Provided data is not proper",
     "Updated_Successfully": "Updated successfully",
     "Update_Can_Not_Be_Performed": "Update can not be performed",
