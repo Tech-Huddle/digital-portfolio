@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body{
-    background-image: url('https://cdn.pixabay.com/photo/2017/04/06/11/25/notes-2208049_1280.jpg');
     /* background-image: url('https://cdn.pixabay.com/photo/2016/07/30/20/52/vintage-1557993_1280.jpg'); */
     background-repeat: no-repeat;
+    background-color: rgb(39, 38, 38);
     background-size: cover;
     background-attachment: fixed;
     scroll-behavior: smooth;
