@@ -131,7 +131,7 @@ exports.userUpdate = async (params, next) => {
             });
             if (updateData[0] == 0) {
                 logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
-                next({ "message": "Update_Can_Not_Be_Performed", "success": false, "status": 405 })
+                next({ "message": "Update can not be performed", "success": false, "status": 405 })
             } else {
                 logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
                 return ({ "message": "Updated_Successfully", "success": true })

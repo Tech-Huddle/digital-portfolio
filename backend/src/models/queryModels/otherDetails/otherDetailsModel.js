@@ -16,20 +16,13 @@ const Sequelize = require("../../../../database/connection");
 // ************************* Associations End **************************************************************
 
 
-exports.BasicDetailsCreate = async (params, next) => {
+exports.otherDetailsCreate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
 
-        var basic_details = params.data;
-        let result = "";
-        let get_user_no = await db.BasicDetails.findOne({ where: { "user_id": basic_details.user_id } });
-        if (get_user_no == null) {
-            result = await db.BasicDetails.create(basic_details);
-        } else {
-            next({ "success": false, "message": "basic details already exist", "status": 409 });
-            return;
-        }
-
+        var params = params.data;
+        let result = {};
+        result = await db.OtherDetails.create(params);
         logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
         return ({ "data": JSON.parse(JSON.stringify(result)), "success": true })
     } catch (error) {
@@ -44,7 +37,7 @@ exports.BasicDetailsCreate = async (params, next) => {
     }
 }
 
-exports.BasicDetailsList = async (params, next) => {
+exports.otherDetailsList = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         params = params.data;
@@ -84,11 +77,11 @@ exports.BasicDetailsList = async (params, next) => {
             findAll_hash["offset"] = offset;
             findAll_hash["limit"] = limit;
         }
-        var result = await db.BasicDetails.findAll(findAll_hash);
+        var result = await db.OtherDetails.findAll(findAll_hash);
         if (!params.filter || (params.filter && (!params.filter.total || parseInt(params.filter.total) == 0))) {
             delete findAll_hash.offset;
             delete findAll_hash.limit;
-            var count = await db.BasicDetails.findAll(findAll_hash);
+            var count = await db.OtherDetails.findAll(findAll_hash);
             logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
             return ({ "data": JSON.parse(JSON.stringify(result)), "total": count.length, "success": true });
         } else {
@@ -104,15 +97,15 @@ exports.BasicDetailsList = async (params, next) => {
     }
 }
 
-exports.BasicDetailsUpdate = async (params, next) => {
+exports.otherDetailsUpdate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         var id = params.id;
         var data = params.data;
-        var dataExists = await db.BasicDetails.findOne({ where: { id: id } });
+        var dataExists = await db.OtherDetails.findOne({ where: { id: id } });
         dataExists = JSON.parse(JSON.stringify(dataExists));
         if (dataExists != null) {
-            let updateData = await db.BasicDetails.update(
+            let updateData = await db.OtherDetails.update(
                 data, {
                 where: { id: id }
             });
@@ -136,15 +129,15 @@ exports.BasicDetailsUpdate = async (params, next) => {
     }
 }
 
-exports.BasicDetailsDelete = async (params, next) => {
+exports.otherDetailsDelete = async (params, next) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     try {
         var id = params.data;
-        var dataExists = await db.BasicDetails.findOne({
+        var dataExists = await db.OtherDetails.findOne({
             where: { id: id }
         });
         if (dataExists != null) {
-            var result = await db.BasicDetails.destroy({
+            var result = await db.OtherDetails.destroy({
                 where: { id: id }
             });
             return ({ "message": "Deleted Successfully", "success": true })

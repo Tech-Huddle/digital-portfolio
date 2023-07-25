@@ -126,6 +126,18 @@ exports.validateParamsBasicDetailsUpdate=(req,next)=>{
         if(data.phone_number){
             data_validate["phone_number"] = Joi.string().min(1).required()
         }
+        if(data.address){
+            data_validate["address"] = Joi.string().min(1).required()
+        }
+        if(data.objective){
+            data_validate["objective"] = Joi.string().min(1).required()
+        }
+        if(data.headline){
+            data_validate["headline"] = Joi.string().min(1).required()
+        }
+        if(data.language){
+            data_validate["language"] = Joi.string().min(1).required()
+        }
         const schemas = Joi.object().keys(data_validate);
         const validation = schemas.validate(data);
         if (validation.error) {

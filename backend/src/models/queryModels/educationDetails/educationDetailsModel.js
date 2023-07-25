@@ -16,19 +16,14 @@ const Sequelize = require("../../../../database/connection");
 // ************************* Associations End **************************************************************
 
 
-exports.EducationDetailsCreate = async (params, next) => {
+exports.educationDetailsCreate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
 
         var params = params.data;
         let result = "";
-        let get_user_no = await db.EducationDetails.findOne({ where: { "user_id": params.user_id } });
-        if (get_user_no == null) {
-            result = await db.EducationDetails.create(params);
-        } else {
-            next({ "success": false, "message": "basic details already exist", "status": 409 });
-            return;
-        }
+
+        result = await db.EducationDetails.create(params);
 
         logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
         return ({ "data": JSON.parse(JSON.stringify(result)), "success": true })
@@ -44,7 +39,7 @@ exports.EducationDetailsCreate = async (params, next) => {
     }
 }
 
-exports.EducationDetailsList = async (params, next) => {
+exports.educationDetailsList = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         params = params.data;
@@ -104,7 +99,7 @@ exports.EducationDetailsList = async (params, next) => {
     }
 }
 
-exports.EducationDetailsUpdate = async (params, next) => {
+exports.educationDetailsUpdate = async (params, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         var id = params.id;
@@ -118,7 +113,7 @@ exports.EducationDetailsUpdate = async (params, next) => {
             });
             if (updateData[0] == 0) {
                 logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
-                next({ "message": "Update_Can_Not_Be_Performed", "success": false, "status": 405 })
+                next({ "message": "Update can not be performed", "success": false, "status": 405 })
             } else {
                 logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
                 return ({ "message": "Updated_Successfully", "success": true })
@@ -136,7 +131,7 @@ exports.EducationDetailsUpdate = async (params, next) => {
     }
 }
 
-exports.EducationDetailsDelete = async (params, next) => {
+exports.educationDetailsDelete = async (params, next) => {
     logger.info("* Starting %s of %s *", getName().functionName, getName().fileName);
     try {
         var id = params.data;

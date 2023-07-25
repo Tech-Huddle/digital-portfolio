@@ -7,7 +7,7 @@ module.exports = sequelize.define('EducationDetails', {
     primaryKey: true,
     type: Sequelize.INTEGER
   },
-  user_Id: {
+  user_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
