@@ -1,18 +1,19 @@
 import React from 'react'
 import "../App.css";
-import Education from "./Education";
-import About from "./About";
-import Experience from "./Experience";
-import Achievements from "./Achievements";
-import Skills from "./Skills";
-import Projects from "./Projects";
-import Lang from "./Lang";
+import Education from "./ResumeUI/Education";
+import About from "./ResumeUI/About";
+import Experience from "./ResumeUI/Experience";
+import Achievements from "./ResumeUI/Achievements";
+import Skills from "./ResumeUI/Skills";
+import Projects from "./ResumeUI/Projects";
+import Lang from "./ResumeUI/Lang";
 import UserDataService from "../service/UserDataService";
 import html2pdf from 'html2pdf.js';
 
 
 
 function Preview() {
+  // this function returns the resume Preview look 
     const user_data = new UserDataService();
     const data = user_data.getData();
   

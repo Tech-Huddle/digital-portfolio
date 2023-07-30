@@ -1,20 +1,115 @@
-import React from 'react'
-import BasicDetails from './components/UserForm/BasicDetails'
-import Part2 from './components/UserForm/ExperienceDetails'
-import EducationDetails from './components/UserForm/EducationDetails'
-import OtherDetails from './components/UserForm/OtherDetails'
+import React, { useState } from "react";
+import BasicDetails from "./components/UserForm/BasicDetails";
+// import EducationDetails from "./components/UserForm/EducationDetails";
+import OtherDetails from "./components/UserForm/OtherDetails";
+import { MultistepForm } from "./components/MultistepForm";
+// import ExperienceDetails from "./components/UserForm/ExperienceDetails";
+
+const initialData = {
+  name: "",
+  headline: "",
+  address: "",
+  email: "",
+  phone: "",
+  objective: "",
+  experience: {
+  },
+  skills: {},
+  education: [
+    {
+      course: "",
+      location: "",
+      institute: "",
+      major: "",
+      startDate: "",
+      endDate: "",
+    },
+  ],
+  languages: [],
+  imageUrl: "",
+  github: "",
+  linkedin: "",
+  instagram: "",
+  facebook: "",
+  reddit: "",
+  youtube: "",
+  stackoverflow: "",
+  others: "",
+  personalwebsite: "",
+  twitter: "",
+  certification: [
+    {
+      name: "",
+      organization: "",
+      "issue-date": {
+        month: "",
+        year: "",
+      },
+      "expiry-date": {
+        month: "",
+        year: "",
+      },
+      "credential-id": "",
+      "credential-url": "",
+      "cerficate-badge": "",
+    },
+  ],
+};
 
 const App = () => {
-  // use state diye part1 r part2 er modheye switch korte hobe
-  
+  const [data, setData] = useState(initialData);
+  function updateFields(fields) {
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
+  }
+  const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
+    MultistepForm([
+      <BasicDetails {...data} updateFields={updateFields} />,
+      // <ExperienceDetails {...data} updateFields={updateFields}/> ,
+      // <EducationDetails {...data} updateFields={updateFields}/> ,
+      <OtherDetails {...data} updateFields={updateFields} />,
+    ]);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    if (!isLastStep) return next();
+    console.log(data)
+    alert("Congrats!!! Your details has been recorded!");
+  }
+
   return (
     <div>
-      <BasicDetails></BasicDetails>
-      <Part2></Part2>
-      <EducationDetails/>
-      <OtherDetails></OtherDetails>
-    </div>
-  )
-}
+      <form action="" className="" onSubmit={onSubmit}>
+        <div>
+          {currentStepIndex + 1} / {steps.length}
+        </div>
+        {/* ------------------ form ---------------------  */}
+        <div>{step}</div>
+        {/* _______________________ buttons _____________  */}
+        <div>
+          {!isFirstStep && (
+            <button
+              onClick={back}
+              className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+              type="button"
+            >
+              <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Back
+              </span>
+            </button>
+          )}
 
-export default App
+          <button
+            type="submit"
+            className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl hover:text-black focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            {isLastStep ? "Submit" : "Next"}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default App;
