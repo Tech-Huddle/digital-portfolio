@@ -25,7 +25,7 @@ exports.validateParamsUserCreate = (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -36,7 +36,8 @@ exports.formatResponseUserCreate = (params) => {
         result = {
             "status": 200,
             "success": true,
-            "message": params.message
+            "message": params.message,
+            "data": params.data
         };
     }
     logger.info("* Ending %s of %s *", getName().functionName, getName().fileName);
@@ -85,7 +86,7 @@ exports.validateParamsUserList = async (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -134,7 +135,7 @@ exports.validateParamsUserUpdate=(req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -168,7 +169,7 @@ exports.validateParamsUserDelete = (req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 

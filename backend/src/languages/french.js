@@ -1,10 +1,10 @@
 exports.frLang = {
 
     //******************************Common start ***************************************************************/
-    "Internal_Server_Error": "Erreur Interne du Serveur",
+    "Internal Server Error": "Erreur Interne du Serveur",
     "Provided_Data_Format_Is_Not_Proper": "Le format de données fourni n'est pas correct",
     "Updated_Successfully": "Mis à jour avec succés",
-    "Update_Can_Not_Be_Performed": "La mise à jour ne peut pas être effectuée",
+    "Update can not be performed": "La mise à jour ne peut pas être effectuée",
     "Id_Does_Not_Exist": "L'identifiant n'existe pas",
     "Deletion_Can_No_Be_Performed": "La suppression ne peut pas être effectuée",
     "\"name\" is not allowed to be empty": "le nom ne doit pas être vide",
@@ -23,7 +23,7 @@ exports.frLang = {
     //******************************organisation start **********************************************************/
     "Organisation_Created_Successfully": "Organisation créée avec succès",
     "Organisation_Already_Exist": "Organisation déjà existe",
-    "Internal_Server_Error": "Erreur Interne du Serveur",
+    "Internal Server Error": "Erreur Interne du Serveur",
     "%s deleted successfully": "%s Supprimé avec succès",
     "Deletion_Can_No_Be_Performed": "La suppression ne peut pas être effectuée",
     //******************************organisation end ************************************************************/

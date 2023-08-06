@@ -12,11 +12,11 @@ const {
   formatResponseOtherDetailsDelete,
 } = require("../../helpers/OtherDetails/OtherDetailsHelper");
 const {
-  OtherDetailsCreate,
-  OtherDetailsList,
-  OtherDetailsUpdate,
-  OtherDetailsDelete,
-} = require("../../models/queryModels/OtherDetails/OtherDetailsModel");
+  otherDetailsCreate,
+  otherDetailsList,
+  otherDetailsUpdate,
+  otherDetailsDelete,
+} = require("../../models/queryModels/otherDetails/otherDetailsModel");
 
 exports.createOtherDetails = async (req, res, next) => {
   logger.info(
@@ -28,7 +28,7 @@ exports.createOtherDetails = async (req, res, next) => {
     let data = req.body;
     let validDatas = validateParamsOtherDetailsCreate(data);
     if (validDatas.success) {
-      result = await OtherDetailsCreate(validDatas, next);
+      result = await otherDetailsCreate(validDatas, next);
       res.send({
         message: "success",
         data: formatResponseOtherDetailsCreate(result),
@@ -43,7 +43,7 @@ exports.createOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -57,7 +57,7 @@ exports.listOtherDetails = async (req, res, next) => {
     let data = req;
     let validDatas = await validateParamsOtherDetailsList(data, next);
     if (validDatas.success) {
-      result = await OtherDetailsList(validDatas, next);
+      result = await otherDetailsList(validDatas, next);
       res.send({
         message: "success",
         data: formatResponseOtherDetailsList(result),
@@ -72,7 +72,7 @@ exports.listOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -85,7 +85,7 @@ exports.updateOtherDetails = async (req, res, next) => {
   try {
     let validDatas = validateParamsOtherDetailsUpdate(req);
     if (validDatas.success) {
-      result = await OtherDetailsUpdate(validDatas, next);
+      result = await otherDetailsUpdate(validDatas, next);
       res.send({
         message: "success",
         data: formatResponseOtherDetailsUpdate(result),
@@ -100,7 +100,7 @@ exports.updateOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };
 
@@ -113,7 +113,7 @@ exports.deleteOtherDetails = async (req, res, next) => {
   try {
     let validDatas = validateParamsOtherDetailsDelete(req);
     if (validDatas.success) {
-      result = await OtherDetailsDelete(validDatas, next);
+      result = await otherDetailsDelete(validDatas, next);
       res.send({
         message: "success",
         data: formatResponseOtherDetailsDelete(result),
@@ -128,6 +128,6 @@ exports.deleteOtherDetails = async (req, res, next) => {
       getName().fileName
     );
     logger.error(error.message || JSON.stringify(error));
-    next({ message: "Internal_Server_Error" });
+    next({ message: "Internal Server Error" });
   }
 };

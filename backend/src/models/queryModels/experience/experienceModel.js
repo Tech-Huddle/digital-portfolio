@@ -21,15 +21,8 @@ exports.experienceCreate = async (params, next) => {
     try {
 
         var params = params.data;
-        let result = "";
-        let get_user_no = await db.Experience.findOne({ where: { "user_id": params.user_id } });
-        if (get_user_no == null) {
-            result = await db.Experience.create(params);
-        } else {
-            next({ "success": false, "message": "basic details already exist", "status": 409 });
-            return;
-        }
-
+        let result = {};
+        result = await db.Experience.create(params);
         logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
         return ({ "data": JSON.parse(JSON.stringify(result)), "success": true })
     } catch (error) {
@@ -39,7 +32,7 @@ exports.experienceCreate = async (params, next) => {
             logger.error("* Username already exist in %s of %s *", getName().functionName, getName().fileName);
             next({ "success": false, "message": "Username_Already_Exist", "status": 409 });
         } else {
-            next({ "success": false, "message": "Internal_Server_Error" });
+            next({ "success": false, "message": "Internal Server Error" });
         }
     }
 }
@@ -100,7 +93,7 @@ exports.experienceList = async (params, next) => {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -118,7 +111,7 @@ exports.experienceUpdate = async (params, next) => {
             });
             if (updateData[0] == 0) {
                 logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
-                next({ "message": "Update_Can_Not_Be_Performed", "success": false, "status": 405 })
+                next({ "message": "Update can not be performed", "success": false, "status": 405 })
             } else {
                 logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
                 return ({ "message": "Updated_Successfully", "success": true })
@@ -132,7 +125,7 @@ exports.experienceUpdate = async (params, next) => {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -155,6 +148,6 @@ exports.experienceDelete = async (params, next) => {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }

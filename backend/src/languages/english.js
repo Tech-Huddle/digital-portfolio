@@ -1,9 +1,9 @@
 exports.enLang = {
     //******************************Common start *************************************/
-    "Internal_Server_Error": "Internal server error",
+    "Internal Server Error": "Internal server error",
     "Provided_Data_Format_Is_Not_Proper": "Provided data is not proper",
     "Updated_Successfully": "Updated successfully",
-    "Update_Can_Not_Be_Performed": "Update can not be performed",
+    "Update can not be performed": "Update can not be performed",
     "Id_Does_Not_Exist": "Id does not exist",
     "Deletion_Can_No_Be_Performed": "Deletion can not be performed",
     "\"name\" is not allowed to be empty": "name is to allowed to be empty",

@@ -7,8 +7,9 @@ const { getName } = require('../../../logger/logFunctionName');
 const moment = require('moment');
 const sequelize = require('sequelize');
 const Sequelize = require("../../../../database/connection");
-
-
+const saltRounds = EV.SALT_ROUND;
+const { createTempPass } = require('../../../common_modules/create_temp_pass')
+const bcrypt = require('bcrypt');
 
 // ************************* Associations start ************************************************************
 
@@ -24,7 +25,15 @@ exports.userCreate = async (params, next) => {
         let result = "";
         let get_user_no = await db.User.findOne({ where: { "email": user_details.email } });
         if (get_user_no == null) {
-            await db.User.create(user_details);
+            result = await db.User.create(user_details);
+            let temp_password = createTempPass(8);
+            let salt = await bcrypt.genSalt(parseInt(saltRounds));
+            let userSecretData = {};
+            userSecretData["user_id"] = result.id;
+            userSecretData["status"] = "FORCE_PASSWORD_CHANGE";
+            userSecretData["password"] = await bcrypt.hash(temp_password, salt);
+            await db.UserSecretInfo.create(userSecretData);
+
         } else {
             next({ "success": false, "message": "user already exist", "status": 409 });
             return;
@@ -39,7 +48,7 @@ exports.userCreate = async (params, next) => {
             logger.error("* Username already exist in %s of %s *", getName().functionName, getName().fileName);
             next({ "success": false, "message": "Username_Already_Exist", "status": 409 });
         } else {
-            next({ "success": false, "message": "Internal_Server_Error" });
+            next({ "success": false, "message": "Internal Server Error" });
         }
     }
 }
@@ -57,7 +66,7 @@ exports.usersList = async (params, next) => {
             if (Object.keys(params.filter).length > 0) {
                 let filterKeys = Object.keys(params.filter);
                 filterKeys.forEach(filterKey => {
-                    if ((!(filterKey == "offset" || filterKey == "limit" ))) {
+                    if ((!(filterKey == "offset" || filterKey == "limit"))) {
                         inner_hash[filterKey] = params.filter[filterKey];
                     }
                     if ((!(filterKey == "offset" || filterKey == "limit"))) {
@@ -104,7 +113,7 @@ exports.usersList = async (params, next) => {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -122,7 +131,7 @@ exports.userUpdate = async (params, next) => {
             });
             if (updateData[0] == 0) {
                 logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
-                next({ "message": "Update_Can_Not_Be_Performed", "success": false, "status": 405 })
+                next({ "message": "Update can not be performed", "success": false, "status": 405 })
             } else {
                 logger.info("*** Ending %s of %s ***", getName().functionName, getName().fileName);
                 return ({ "message": "Updated_Successfully", "success": true })
@@ -136,7 +145,7 @@ exports.userUpdate = async (params, next) => {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -147,18 +156,18 @@ exports.userDelete = async (params, next) => {
         var dataExists = await db.User.findOne({
             where: { id: id }
         });
-        if(dataExists!=null) {
+        if (dataExists != null) {
             var result = await db.User.destroy({
                 where: { id: id }
             });
             return ({ "message": "Deleted Successfully", "success": true })
-        }else{
+        } else {
             next({ "message": "Data not found", "success": false, "status": 404 });
         }
     } catch (error) {
         logger.error("* Error in %s of %s *", getName().functionName, getName().fileName);
         logger.error(error.message || JSON.stringify(error));
         let errorMsg = error.message || JSON.stringify(error);;
-        next({ "success": false, "message": "Internal_Server_Error" });
+        next({ "success": false, "message": "Internal Server Error" });
     }
 }

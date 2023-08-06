@@ -7,7 +7,6 @@ exports.validateParamsBasicDetailsCreate = (req, next) => {
     logger.info("*** Starting %s of %s ***", getName().functionName, getName().fileName);
     try {
         let data = req;
-        console.log(data);
         const schemas = Joi.object({
             first_name: Joi.string().min(1).required(),
             last_name: Joi.string().min(1).required(),
@@ -30,7 +29,7 @@ exports.validateParamsBasicDetailsCreate = (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -90,7 +89,7 @@ exports.validateParamsBasicDetailsList = async (req, next) => {
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -127,6 +126,18 @@ exports.validateParamsBasicDetailsUpdate=(req,next)=>{
         if(data.phone_number){
             data_validate["phone_number"] = Joi.string().min(1).required()
         }
+        if(data.address){
+            data_validate["address"] = Joi.string().min(1).required()
+        }
+        if(data.objective){
+            data_validate["objective"] = Joi.string().min(1).required()
+        }
+        if(data.headline){
+            data_validate["headline"] = Joi.string().min(1).required()
+        }
+        if(data.language){
+            data_validate["language"] = Joi.string().min(1).required()
+        }
         const schemas = Joi.object().keys(data_validate);
         const validation = schemas.validate(data);
         if (validation.error) {
@@ -139,7 +150,7 @@ exports.validateParamsBasicDetailsUpdate=(req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        return ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        return ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
@@ -173,7 +184,7 @@ exports.validateParamsBasicDetailsDelete = (req,next)=>{
     } catch (err) {
         logger.error("*** Error in %s of %s ***", getName().functionName, getName().fileName);
         logger.error(err.message || JSON.stringify(err));
-        next ({ "status": 500, "success": false, "message": "Internal_Server_Error" });
+        next ({ "status": 500, "success": false, "message": "Internal Server Error" });
     }
 }
 
