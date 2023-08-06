@@ -14,7 +14,7 @@ const OtherDetails = ({
   personalwebsite,
   youtube,
   languages,
-  twitter,
+  twitter,  
   updateFields
 }) => {
   return (

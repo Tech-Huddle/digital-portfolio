@@ -6,56 +6,7 @@ import { MultistepForm } from "./components/MultistepForm";
 // import ExperienceDetails from "./components/UserForm/ExperienceDetails";
 
 const initialData = {
-  name: "",
-  headline: "",
-  address: "",
-  email: "",
-  phone: "",
-  objective: "",
-  experience: {
-  },
-  skills: {},
-  education: [
-    {
-      course: "",
-      location: "",
-      institute: "",
-      major: "",
-      startDate: "",
-      endDate: "",
-    },
-  ],
-  languages: [],
-  imageUrl: "",
-  github: "",
-  linkedin: "",
-  instagram: "",
-  facebook: "",
-  reddit: "",
-  youtube: "",
-  stackoverflow: "",
-  others: "",
-  personalwebsite: "",
-  twitter: "",
-  certification: [
-    {
-      name: "",
-      organization: "",
-      "issue-date": {
-        month: "",
-        year: "",
-      },
-      "expiry-date": {
-        month: "",
-        year: "",
-      },
-      "credential-id": "",
-      "credential-url": "",
-      "cerficate-badge": "",
-    },
-  ],
-};
-
+}
 const App = () => {
   const [data, setData] = useState(initialData);
   function updateFields(fields) {
