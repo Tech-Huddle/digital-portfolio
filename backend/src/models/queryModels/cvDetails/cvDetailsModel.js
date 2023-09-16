@@ -49,9 +49,9 @@ exports.cvDetailsList = async (params, next) => {
 
         let userData = await db.User.findOne({ where: { id: params.id } });
         let educationDetails = await db.EducationDetails.findAll({ where: { user_id: params.id } });
-        let basicDetails = await db.BasicDetails.findAll({ where: { user_id: params.id } });
+        let basicDetails = await db.BasicDetails.findOne({ where: { user_id: params.id } });
         let experianceDetails = await db.Experience.findAll({ where: { user_id: params.id } });
-        let otherDetails = await db.OtherDetails.findAll({ where: { user_id: params.id } });
+        let otherDetails = await db.OtherDetails.findOne({ where: { user_id: params.id } });
         var result = {
             "userData": userData,
             "experianceDetails": experianceDetails,

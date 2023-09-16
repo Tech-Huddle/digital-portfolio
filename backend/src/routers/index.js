@@ -8,6 +8,8 @@ const educationDetailsRouter = require('./educationDetails/educationDetailsRoute
 const adminRouter = require('./admin/adminRouter');
 const otherDetails = require('./OtherDetails/OtherDetailsRouter');
 const cvDetails = require('./cv/cvRouter');
+const technicalSkill = require('./technical_skill/technical_skill');
+const certification=require('./certification/certification');
 router.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
@@ -25,6 +27,8 @@ router.use('/educationDetails', educationDetailsRouter);
 router.use('/admin', adminRouter);
 router.use('/otherDetails', otherDetails);
 router.use('/cv', cvDetails);
+router.use('/technicalSkill',technicalSkill);
+router.use('/certification',certification);
 
 
 
