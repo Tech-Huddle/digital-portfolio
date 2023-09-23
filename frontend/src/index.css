@@ -2,9 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-image: url('https://cdn.pixabay.com/photo/2016/07/30/20/52/vintage-1557993_1280.jpg');
-    /* background-repeat: no-repeat; */
-    background-attachment: fixed;
-    scroll-behavior: smooth;
-}

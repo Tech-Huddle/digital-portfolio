@@ -1,16 +1,19 @@
-import "./App.css";
-import Education from "./components/Education";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Achievements from "./components/Achievements";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Lang from "./components/Lang";
-import UserDataService from "./service/UserDataService";
+import "./Resume.css";
+import Education from "../../ResumeComponents/Education";
+import About from "../../ResumeComponents/About";
+import Experience from "../../ResumeComponents/Experience";
+import Achievements from "../../ResumeComponents/Achievements";
+import Skills from "../../ResumeComponents/Skills";
+import Projects from "../../ResumeComponents/Projects";
+import Lang from "../../ResumeComponents/Lang";
+import UserDataService from "../../../service/UserDataService";
 import html2pdf from 'html2pdf.js';
 
+import { Link } from 'react-router-dom'
 
-function App() {
+
+
+function Resume() {
   const user_data = new UserDataService();
   const data = user_data.getData();
 
@@ -20,7 +23,13 @@ function App() {
     html2pdf().from(resume).save()
 }
   return (
-    <>
+    <div className="resume">
+    
+
+
+
+
+
       <div className="App bg-white" id="resume">
         <div className="paper ">
           <div className="top">
@@ -56,9 +65,16 @@ function App() {
           </div>
         </div>
       </div>
-      <button className="btn" onClick={convert2PDF}>DOWNLOAD</button>
-    </>
+
+
+      <Link to="/basic">
+      <button  className="sticky bottom-20 left-2 bg-gray-200 rounded hover:border-black text-gray-700 font-bold py-2 px-5" > UPDATE CV </button>
+      </Link>
+        <div/>
+      <button  className="sticky bottom-5 left-2 inline-block bg-gray-200 rounded hover:border-black text-gray-700 font-bold py-2 px-4" onClick={convert2PDF}>DOWNLOAD</button>
+
+    </div>
   );
 }
 
-export default App;
+export default Resume;
