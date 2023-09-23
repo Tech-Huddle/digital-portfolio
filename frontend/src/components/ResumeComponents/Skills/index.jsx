@@ -1,6 +1,5 @@
 import './index.css'
 
-import React from 'react'
 
 const Skills = (props) => {
   
