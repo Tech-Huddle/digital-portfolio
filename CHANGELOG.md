@@ -1,3 +1,7 @@
+- `Sat Oct 7 22:26:45 2023 +0800 `  Commiter: Utshab Saha   Author: Utshab Saha 
+```
+ change log script added
+```
 - `Sat Sep 23 21:16:30 2023 +0530 `  Commiter: GitHub   Author: Anupam Datta 
 ```
  Merge pull request #12 from Tech-Huddle/frontend-refactor
