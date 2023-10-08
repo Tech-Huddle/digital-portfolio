@@ -18,6 +18,7 @@ const IndexedInput = ({ small, title, formDataArr, index, variable,handleChange 
           onChange={(e) =>
             handleChange(index, [variable], e.target.value)
           }
+          required
         />
       </div>
     </div>

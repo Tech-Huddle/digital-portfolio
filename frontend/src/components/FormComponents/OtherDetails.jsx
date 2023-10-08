@@ -81,6 +81,18 @@ export default function OtherDetails() {
                   handleChange={handleChange}
                 />
               </div>
+                
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <IndexedInput
+                  small={true}
+                  title="Languages"
+                  formDataArr={formDataArr} 
+                  index={index}
+                  variable="lang"
+                  handleChange={handleChange}
+                />
+              </div>
+                
             </form>
           ))}
 

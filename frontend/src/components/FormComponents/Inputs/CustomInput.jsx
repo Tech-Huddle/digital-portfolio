@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const CustomInput = ({ small, title, formData, variable, setFormData }) => {
+  // this function takes a set of parameters, to decide the title size , form datatype and variable
   const size = small ?  "w-full md:w-1/2 px-3 mb-6" : "w-full px-3" 
   return (
     <div className= {size}>
@@ -18,6 +19,8 @@ const CustomInput = ({ small, title, formData, variable, setFormData }) => {
           onChange={(e) =>
             setFormData({ ...formData, [variable]: e.target.value })
           }
+          required // make sure to uncomment this line before make this production ready
+          
         />
       </div>
     </div>
@@ -33,3 +36,10 @@ CustomInput.propTypes = {
   setFormData: PropTypes.func.isRequired, // Required function prop
 };
 export default CustomInput;
+
+
+// improvements: 
+  // custom input and indexed can be  merged together,
+  //  one can see the length of the arguments given to a function 
+  //  and use a conditional statement on onChange function to select 
+  //  either
