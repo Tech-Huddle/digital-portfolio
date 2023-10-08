@@ -17,7 +17,7 @@ fi
 echo "Generating Change Log $(date) 🪵"
 count=$(git log --pretty=format:"%ad Commiter: %cn Author: %an %s" | wc -l)
 i=1
-while [[ "$i" -ne "$count" ]]
+while [ "$i" -le "$(( count+1 ))" ]
 do
     date=$(git log --pretty=format:"%ad | Commiter: %cn | Author: %an | %s" | sed -n ${i}p | awk -F '|' '{ print $1 }') 
     commiter=$(git log --pretty=format:"%ad | Commiter: %cn | Author: %an | %s" | sed -n ${i}p | awk -F '|' '{ print $2 }') 

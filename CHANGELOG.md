@@ -1,3 +1,7 @@
+- `Sat Oct 7 22:32:05 2023 +0800 `  Commiter: Utshab Saha   Author: Utshab Saha 
+```
+ readme updated
+```
 - `Sat Oct 7 22:26:45 2023 +0800 `  Commiter: Utshab Saha   Author: Utshab Saha 
 ```
  change log script added
@@ -165,4 +169,12 @@
 - `Thu May 25 12:12:35 2023 +0530 `  Commiter: Rajarshi Banerjee   Author: Rajarshi Banerjee 
 ```
  new files created
+```
+- `Wed Apr 19 11:09:24 2023 +0800 `  Commiter: utshab500   Author: utshab500 
+```
+ sample data added
+```
+- `Wed Apr 19 10:20:31 2023 +0800 `  Commiter: GitHub   Author: Utshab Saha 
+```
+ Initial commit
 ```
