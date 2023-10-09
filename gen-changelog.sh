@@ -24,5 +24,7 @@ do
     author=$(git log --pretty=format:"%ad | Commiter: %cn | Author: %an | %s" | sed -n ${i}p | awk -F '|' '{ print $3 }') 
     message=$(git log --pretty=format:"%ad | Commiter: %cn | Author: %an | %s" | sed -n ${i}p | awk -F '|' '{ print $4 }') 
     formatChangeLog "$date" "$commiter" "$author" "$message"
+    percetange=$(( ( i * 100) / count ))
+    echo -ne "$percetange/100%\r"
     i=$(( i+1 ))
 done
