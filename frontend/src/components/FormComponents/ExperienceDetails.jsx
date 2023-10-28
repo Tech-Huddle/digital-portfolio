@@ -7,6 +7,7 @@ import IndexedInput from "./Inputs/IndexedInput";
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
 export default function ExperienceDetails() {
   const navigate = useNavigate();
 
@@ -33,6 +34,12 @@ export default function ExperienceDetails() {
     setRepeatCount(repeatCount + 1);
     setFormDataArr([...formDataArr, initialFormData]); 
   };
+  
+  const removeInputFields = () =>{
+    setRepeatCount(repeatCount -1);
+    setFormDataArr([...formDataArr, initialFormData]); 
+    
+  }
 
   const handleChange = (index, field, value) => {
     const updatedFormDataArr = [...formDataArr]; 
@@ -197,6 +204,13 @@ export default function ExperienceDetails() {
               onClick={handleRepeatClick}
             >
               Add Experience
+            </button>
+            <button
+              className="bg-gray-200 rounded hover:border-black text-gray-700 font-bold py-2 px-4 mr-8"
+              type="button"
+              onClick={removeInputFields}
+            >
+              remove Experience
             </button>
             <button
               className="bg-gray-200 rounded hover:border-black text-gray-700 font-bold py-2 px-4"
